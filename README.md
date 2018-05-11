@@ -1,5 +1,6 @@
 # forgePerson
 Person of forge_Project
-4月26日：
-----forge登录注册完成
-----forge_CMS管理用户，包含用户查询、修改、更新已完成；文件上传待完善；用户登录过滤器已完成。
+JavaWebTest。<br/>
+运用JSP+Servlet等的JavaWeb技术实现，耗时两个星期。
+前台（C）实现：登录注册、购物车、浏览记录、三级菜单、下单功能、商品展示、新增地址时的级联菜单。
+后台（forge_CMS）实现：指定用户登陆前台时出现后台按钮入口。实现所有表的基本增删改查操作。
