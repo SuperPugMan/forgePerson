@@ -6,6 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 public class DBoperator {
 	protected static Connection conn = null;
 	protected static PreparedStatement pstmt = null;
@@ -44,7 +49,7 @@ public class DBoperator {
 	@SuppressWarnings("unused")
 	protected static boolean getConnection() throws ClassNotFoundException,
 			SQLException {
-		try {
+/*		try {
 			ConfigSingTon instance = ConfigSingTon.getInstance();
 			Class.forName(ConfigSingTon.getInstance().getValue("driver"));
 			conn = DriverManager.getConnection(instance.getValue("url"),
@@ -54,7 +59,21 @@ public class DBoperator {
 			e.printStackTrace();
 			return false;
 		}
-		return true;
+		
+*/	
+		try {
+			//初始化上下文获取Tomcat容器
+			Context con=new InitialContext();
+			//通过数据源配置中的name属性获取指定的数据源
+			DataSource  ds = (DataSource) con.lookup("java:comp/env/jdbc/forge");
+			//从连接池中获取链接
+			conn = ds.getConnection();
+			return true;
+		} catch (NamingException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
 	}
 
 	/*

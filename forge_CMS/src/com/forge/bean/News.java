@@ -1,8 +1,10 @@
 package com.forge.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class News {
+public class News implements Serializable{
+	private int id;
 	private String title;
 	private String content;
 	private Date createTime;
@@ -15,6 +17,12 @@ public class News {
 		this.title = title;
 		this.content = content;
 		this.createTime = createTime;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public void setTitle(String title) {
 		this.title = title;
@@ -35,6 +43,8 @@ public class News {
 		return img;
 	}
 	public void setImg(String img) {
+        
+
 		this.img = img;
 	}
 	@Override

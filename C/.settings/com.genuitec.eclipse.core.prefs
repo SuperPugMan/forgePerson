@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+validator.Checked=WebRoot/backstage/js/corechart.js,src/com/xh/bean,src/com/xh/dao,WebRoot,WebRoot/backstage/js/jquery.min.js
+validator.Unchecked=WebRoot/css,WebRoot/backstage/js

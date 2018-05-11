@@ -7,7 +7,8 @@ import java.util.Properties;
 
 import net.spy.memcached.MemcachedClient;
 
-import com.forge.util.ConfigSingTon.LazyHolder;
+
+
 
 public class MemcachedDBSington {
 	private MemcachedClient client ;

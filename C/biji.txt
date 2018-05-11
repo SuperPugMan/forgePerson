@@ -1,0 +1,104 @@
+
+
+
+
+
+
+
+4/28
+二：
+
+
+
+在java EE 6 后可以不配置拦截的要求的xml，只要在类的前面加上@WebFilter("/backstage/*")
+@WebFilter("/backstage/*")//这里是拦截所有后台的访问的页面！防止随便人访问后台的页面
+public class LoginFilter implements Filter 
+拦截器：只要是符合拦截的请求：都会被拦截处理   href="请求路径"  img src="路径" .jsp页面   .css js 都是一个请求
+
+
+
+注意事项：
+
+在前端可以console.lod("内容");   在F12   console可以看到信息
+
+
+1：继承HttpServlet类，在重写doGet(),doPost(),方法是记得，去掉父类的，不然导致请求过多
+2：在写Ajax，分页的符的下标是没有输出1的，0,2,3,4,5,..........
+      在dao层做逻辑
+        pageNum>>是当前页-1;也就是要在数据的要开始查找的下标
+      	if (pageNum!=0) {//因为前端的分页符没下标1的，跳了加1,===>0,2,3,4,5,6		
+			pageNum=pageNum*3-3;//做处理把2转换为1
+		}	
+		String sql = "select * from easybuy_news limit ?,?";
+		
+
+		
+5/1
+
+注意的是：当js在外部引进来中文乱码的问题，有可能是js文件的不是utf-8,
+         解决方法：用记事本打开.js的文件另存为，换一下编码格式，在覆盖原来的.js文件
+         
+         
+         
+
+
+
+5/3
+
+
+注意的是：做ajax在前台显示是js,css,样式失效，因为是异步会导致js失效，
+解决方法就是，在每次ajax请求是都引入提下拼接时需要的js,css,
+
+$.ajax({
+			   
+			        url: "ProductCategoryServlet?methon=erji",  //需要提交的服务器地址（自己写的servlet@WebServlet("/news/*")）
+			        type: "post",  //请求的方式
+			        data: {"pageNum": name},  //传递给服务器的参数
+			        async: false,
+			        success: function (data) {  //回调函数：拿到后台传过来的数据
+			          var data=$.parseJSON(data);
+			          flag = true; 
+			          var loadFile;
+
+			          loadFile = setInterval(function() {//定时检测加载样式    
+			               if(flag) {//如果数据已经处理完毕，
+			            	   
+			            	   //$.getScript('js/index.js');
+			              	   loadjscssfile('css/base.css', "css"); //加载你的css文件
+			                   loadjscssfile('css/home.css', "css"); //加载你的css文件
+			                   loadjscssfile('js/jquery.js', "js"); //加载你的js文件
+			                   loadjscssfile('js/index.js', "js"); //加载你的js文件
+			                   loadjscssfile(' js/jquery-1.12.4.js', "js"); //加载你的js文件                  
+			                   clearTimeout(t);//取消定时检测节省开销
+			                   
+			               }
+			           },50);
+			          
+			          			        			    
+			            $.each(data, function (i, dom) {
+			                //一个dom就是一个用户对象
+			            	
+			            	//做拼接
+		 
+			            });			            
+
+//还是不太会查找问题，一下子找不到想要的，
+
+
+5/4   14:40  实现了ajax的分层，但是要改缓存，
+
+5/5     实现了作用域的分层，只要一加载就把所有页面显示出来，并把数据存在缓存里，
+
+     注意：实现数据的显示（就是数据库的数据读取出来显示在前台页面）看情况来分，Ajax[异步交互，分页],
+
+
+
+5/6 购物车的事项，登录和没有登录！cookie    缓存     数据库  
+
+5/7  el-->jstl[是可以直接写前台html的标签的]  不同拼接
+     js,jQquery--->需要在方法里面通过   标签对象然后拼接
+
+
+
+
+

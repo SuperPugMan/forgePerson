@@ -143,7 +143,7 @@ public class NewsUpload extends HttpServlet {
 				e.printStackTrace();
 			}
 
-			boolean f = service.add(news);
+			boolean f = service.addOne(news);
 			if (f) {
 				System.out.println("成功");
 			} else {

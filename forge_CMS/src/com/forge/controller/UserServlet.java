@@ -2,26 +2,23 @@ package com.forge.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Serializable;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Iterator;
 import java.util.List;
 
-import javax.print.attribute.standard.Sides;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.JspWriter;
 
 import com.forge.bean.User;
 import com.forge.service.UserService;
 import com.forge.service.impl.UserServiceImpl;
 import com.forge.util.Md5Encrypt;
 
-@WebServlet({"/user","/userlogin"})
+@WebServlet({ "/user", "/userlogin" })
 public class UserServlet extends HttpServlet {
 	UserService userSer = new UserServiceImpl();
 
@@ -37,14 +34,13 @@ public class UserServlet extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
 		String userMethod = req.getParameter("method");
-		System.out.println(userMethod);
 		switch (userMethod) {
 		case "login":
 			try {
 				login(req, resp);
 			} catch (NoSuchAlgorithmException e1) {
 				e1.printStackTrace();
-			}					
+			}
 			break;
 		case "register":
 			try {
@@ -53,22 +49,22 @@ public class UserServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		case "mycount":
-			mycount(req,resp);
+			mycount(req, resp);
 			break;
 		case "findAll":
-			findAll(req,resp);
+			findAll(req, resp);
 			break;
 		case "update":
-			update(req,resp);
+			update(req, resp);
 			break;
 		case "findOne":
-			findOne(req,resp);
+			findOne(req, resp);
 			break;
 		case "updateById":
-			updateById(req,resp);
+			updateById(req, resp);
 			break;
 		case "delete":
-			delete(req,resp);
+			delete(req, resp);
 			break;
 		default:
 			break;
@@ -76,75 +72,87 @@ public class UserServlet extends HttpServlet {
 
 	}
 
-	private void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		String id=req.getParameter("id");
-		System.out.println(id);
+	private void delete(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException, ServletException {
+		String id = req.getParameter("id");
 		PrintWriter out = resp.getWriter();
 		boolean delete = userSer.delete(id);
 		System.out.println(delete);
-		if(delete){
+		if (delete) {
 			out.print("<script>alert('删除成功!');</script>");
 			resp.sendRedirect("/forge_CMS/user?method=findAll");
-		}else{
+		} else {
 			out.print("<script>alert('删除成功!');</script>");
 			resp.sendRedirect("/forge_CMS/user?method=findAll");
 
 		}
 	}
 
-	private void updateById(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		String userId=req.getParameter("userid");
-		String name=req.getParameter("loginName");
-		String phone=req.getParameter("phone");
-		String address=req.getParameter("address");
-		String email=req.getParameter("email");
-		User user=new User();
+	private void updateById(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException, ServletException {
+		String userId = req.getParameter("userid");
+		String name = req.getParameter("loginName");
+		String phone = req.getParameter("phone");
+		String address = req.getParameter("address");
+		String email = req.getParameter("email");
+		User user = new User();
 		user.setAddress(address);
 		user.setEmail(email);
 		user.setLoginName(name);
 		user.setPhone(phone);
 		boolean update = userSer.update(userId, user);
-		if(update){
+		if (update) {
 			resp.sendRedirect("/forge_CMS/user?method=findAll");
-		}else{
-			req.getRequestDispatcher("production/User_Info_table.jsp").forward(req, resp);
+		} else {
+			req.getRequestDispatcher("production/User_Info_table.jsp").forward(
+					req, resp);
 		}
-		
+
 	}
 
 	private void findOne(HttpServletRequest req, HttpServletResponse resp) {
-		String id= req.getParameter("id");
+		String id = req.getParameter("id");
 		User user = userSer.findById(id);
 		req.setAttribute("user", user);
 		try {
-			req.getRequestDispatcher("production/User_Info_table.jsp").forward(req, resp);
+			req.getRequestDispatcher("production/User_Info_table.jsp").forward(
+					req, resp);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ServletException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	private void update(HttpServletRequest req, HttpServletResponse resp) {
-		String id=req.getParameter("id");
+		String id = req.getParameter("id");
 		req.setAttribute("id", id);
 		try {
-			resp.sendRedirect("/forge_CMS/user?method=findOne&id="+id+"");
+			resp.sendRedirect("/forge_CMS/user?method=findOne&id=" + id + "");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	private void findAll(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	private void findAll(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
 		List<User> userlist = userSer.findAll();
+		User user = (User) req.getSession().getAttribute("user");
+		Iterator<User> iterator = userlist.iterator();
+		while (iterator.hasNext()) {
+			User integer = iterator.next();
+			if (user.getLoginName().equals(integer.getLoginName())) {
+				iterator.remove();
+			}
+		}
 		req.getSession().setAttribute("userList", userlist);
-		//try {
-			resp.sendRedirect("production/tables_dynamic.jsp");
-/*			req.getRequestDispatcher("production/tables_dynamic.jsp").forward(req, resp);
-		} catch (ServletException e) {
-			e.printStackTrace();
-		}*/
+		// try {
+		resp.sendRedirect("production/tables_dynamic.jsp");
+		/*
+		 * req.getRequestDispatcher("production/tables_dynamic.jsp").forward(req,
+		 * resp); } catch (ServletException e) { e.printStackTrace(); }
+		 */
 	}
 
 	private void mycount(HttpServletRequest req, HttpServletResponse resp) {
@@ -154,7 +162,7 @@ public class UserServlet extends HttpServlet {
 		req.getSession().setAttribute("phone", user.getPhone());
 		req.getSession().setAttribute("email", user.getEmail());
 		req.getSession().setAttribute("phone3", user.getPhone());
-		
+
 	}
 
 	private void register(HttpServletRequest req, HttpServletResponse resp)
@@ -184,7 +192,7 @@ public class UserServlet extends HttpServlet {
 		String name = req.getParameter("name");
 		String pwd = req.getParameter("password");
 		User user = new User();
-		//String encryptedPwd = Md5Encrypt.MD5(pwd);
+		// String encryptedPwd = Md5Encrypt.MD5(pwd);
 		user.setLoginName(name);
 		user.setPassword(pwd);
 		User userQuery = userSer.login(name, pwd);

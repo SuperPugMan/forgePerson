@@ -3,6 +3,7 @@ package com.forge.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import com.forge.bean.Order;
 import com.forge.bean.User;
 
 public interface BaseDao<T> {
@@ -10,5 +11,5 @@ public interface BaseDao<T> {
 	int delete(Serializable id);
 	List<T> findAll();
 	T findById(Serializable id);
-	int update(Serializable id, User user);
+	int update(Serializable id, T t);
 }

@@ -23,8 +23,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <form action="" enctype="application/x-www-form-urlencoded"></form>
    <%
-   	response.sendRedirect("production/login.jsp");
+   	response.sendRedirect("index.html");
    %>
   </body>
 </html>

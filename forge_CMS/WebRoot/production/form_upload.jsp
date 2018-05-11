@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" contentType="text/html; charset=utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"
+	contentType="text/html; charset=utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +11,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Gentelella Alela! |</title>
+
+
+
+<style type="text/css">
+body {
+	padding-bottom: 40px;
+}
+
+.sidebar-nav {
+	padding: 9px 0;
+}
+</style>
+
+<link href="css/jquery-ui-1.8.21.custom.css" rel="stylesheet">
+
+
+
+<link href='css/uniform.default.css' rel='stylesheet'>
+<link href='css/colorbox.css' rel='stylesheet'>
+<link href='css/jquery.cleditor.css' rel='stylesheet'>
+<link href='css/jquery.noty.css' rel='stylesheet'>
+<link href='css/noty_theme_default.css' rel='stylesheet'>
+<link href='css/elfinder.min.css' rel='stylesheet'>
 
 <!-- Bootstrap -->
 <link href="../vendors/bootstrap/dist/css/bootstrap.min.css"
@@ -25,27 +49,54 @@
 
 <!-- Custom Theme Style -->
 <link href="../build/css/custom.min.css" rel="stylesheet">
-    <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <!-- bootstrap-wysiwyg -->
-    <link href="../vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
-    <!-- Select2 -->
-    <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
-    <!-- Switchery -->
-    <link href="../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
-    <!-- starrr -->
-    <link href="../vendors/starrr/dist/starrr.css" rel="stylesheet">
-    <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+<!-- Bootstrap -->
+<link href="../vendors/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<!-- Font Awesome -->
+<link href="../vendors/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet">
+<!-- NProgress -->
+<link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+<!-- iCheck -->
+<link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+<!-- bootstrap-wysiwyg -->
+<link href="../vendors/google-code-prettify/bin/prettify.min.css"
+	rel="stylesheet">
+<!-- Select2 -->
+<link href="../vendors/select2/dist/css/select2.min.css"
+	rel="stylesheet">
+<!-- Switchery -->
+<link href="../vendors/switchery/dist/switchery.min.css"
+	rel="stylesheet">
+<!-- starrr -->
+<link href="../vendors/starrr/dist/starrr.css" rel="stylesheet">
+<!-- bootstrap-daterangepicker -->
+<link href="../vendors/bootstrap-daterangepicker/daterangepicker.css"
+	rel="stylesheet">
 
-    <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+<!-- Custom Theme Style -->
+<link href="../build/css/custom.min.css" rel="stylesheet">
+<style type="text/css">
+#newsDate {
+	transform: translate(-12.5px, 3px);
+}
+
+#newscontent {
+	transform: translate(310px, -40px);
+}
+
+#newscontenttext {
+	transform: translate(230px, -20px);
+}
+
+#newsimage {
+	transform: translate(305px, -40px);
+}
+
+#newsimagetext {
+	transform: translate(245px, -20px);
+}
+</style>
 </head>
 
 <body class="nav-md">
@@ -53,347 +104,236 @@
 		<div class="main_container">
 			<div class="col-md-3 left_col">
 				<div class="left_col scroll-view">
-           <jsp:include   page="PageLeft.jsp" flush="true"/>
+					<jsp:include page="PageLeft.jsp" flush="true" />
+					<!-- page content -->
+					<div class="right_col" role="main">
+						<div class="">
+							<div class="page-title">
+								<div class="title_left">
+									<h3>欢迎新闻新增</h3>
+								</div>
+								<div class="x_panel">
+									<div class="x_title">
+										<h2>
+											新增新闻 <small>请新增一条新闻</small>
+										</h2>
+										<ul class="nav navbar-right panel_toolbox">
+											<li><a class="collapse-link"><i
+													class="fa fa-chevron-up"></i></a></li>
+											<li class="dropdown"><a href="#" class="dropdown-toggle"
+												data-toggle="dropdown" role="button" aria-expanded="false"><i
+													class="fa fa-wrench"></i></a>
+												<ul class="dropdown-menu" role="menu">
+													<li><a href="#">Settings 1</a></li>
+													<li><a href="#">Settings 2</a></li>
+												</ul></li>
+											<li><a class="close-link"><i class="fa fa-close"></i></a>
+											</li>
+										</ul>
+										<div class="clearfix"></div>
+									</div>
+									<div class="x_content">
+										<br />
+										<form id="demo-form2" data-parsley-validate
+											class="form-horizontal form-label-left"
+											action="/forge_CMS/news?method=message" method="post"
+											enctype="multipart/form-data">
 
-
-			<!-- page content -->
-			<div class="right_col" role="main">
-				<div class="">
-					<div class="page-title">
-						<div class="title_left">
-							<h3>Form Upload</h3>
-						</div>
-						<div class="x_panel">
-							<div class="x_title">
-								<h2>
-									Form Design <small>different form elements</small>
-								</h2>
-								<ul class="nav navbar-right panel_toolbox">
-									<li><a class="collapse-link"><i
-											class="fa fa-chevron-up"></i></a></li>
-									<li class="dropdown"><a href="#" class="dropdown-toggle"
-										data-toggle="dropdown" role="button" aria-expanded="false"><i
-											class="fa fa-wrench"></i></a>
-										<ul class="dropdown-menu" role="menu">
-											<li><a href="#">Settings 1</a></li>
-											<li><a href="#">Settings 2</a></li>
-										</ul></li>
-									<li><a class="close-link"><i class="fa fa-close"></i></a>
-									</li>
-								</ul>
-								<div class="clearfix"></div>
-							</div>
-							<div class="x_content">
-								<br />
-								<form id="demo-form2" data-parsley-validate
-									class="form-horizontal form-label-left" 
-									action="/forge_CMS/NewsServlet?method=message"
-									method="post">
-
-									<div class="form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12"
-											for="first-name">News	Title <span class="required">*</span>
-										</label>
-										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="text" id="first-name" required="required"
-												class="form-control col-md-7 col-xs-12"  name="title">
-										</div>
-
-										<!-- form date pickers -->
-										<div class="x_panel" style="">
-											<div class="x_title">
-												<h2>
-													Date Pickers <small> Available with multiple
-														designs</small>
-												</h2>
-												<ul class="nav navbar-right panel_toolbox">
-													<li><a class="collapse-link"><i
-															class="fa fa-chevron-up"></i></a></li>
-													<li class="dropdown"><a href="#"
-														class="dropdown-toggle" data-toggle="dropdown"
-														role="button" aria-expanded="false"><i
-															class="fa fa-wrench"></i></a>
-														<ul class="dropdown-menu" role="menu">
-															<li><a href="#">Settings 1</a></li>
-															<li><a href="#">Settings 2</a></li>
-														</ul></li>
-													<li><a class="close-link"><i class="fa fa-close"></i></a>
-													</li>
-												</ul>
-												<div class="clearfix"></div>
-											</div>
-											<div class="x_content">
-												<div class="row calendar-exibit">
-													<div class="col-md-3">
-														<fieldset>
-															<div class="control-group">
-																<div class="controls">
-																	<div
-																		class="col-md-11 xdisplay_inputx form-group has-feedback">
-																		<input type="text"
-																			class="form-control has-feedback-left"
-																			id="single_cal1" placeholder="First Name"
-																			aria-describedby="inputSuccess2Status" name="datetime"> <span
-																			class="fa fa-calendar-o form-control-feedback left"
-																			aria-hidden="true"></span> <span
-																			id="inputSuccess2Status" class="sr-only">(success)</span>
+											<div class="form-group">
+												<label class="control-label col-md-3 col-sm-3 col-xs-12"
+													for="first-name">请输入新增新闻标题 <span class="required">*</span>
+												</label>
+												<div class="col-md-6 col-sm-6 col-xs-12">
+													<input type="text" id="first-name" required="required"
+														class="form-control col-md-7 col-xs-12" name="title">
+												</div>
+												<!-- form date pickers -->
+												<div class="x_content">
+													<label class="control-label col-md-3 col-sm-3 col-xs-12"
+														for="first-name">请输入新增新闻日期 <span class="required">*</span>
+													</label>
+													<div class="row calendar-exibit">
+														<div class="col-md-3">
+															<fieldset>
+																<div class="control-group">
+																	<div class="control-group">
+																		<div class="controls">
+																			<input type="text" class="input-xlarge datepicker"
+																				name="createTime" id="date01" value="04/24/18">
+																		</div>
 																	</div>
 																</div>
-															</div>
-														</fieldset>
-													</div>
-												</div>
-
-											</div>
-										</div>
-										<!-- /form datepicker -->
-									</div>
-									<div class="col-md-12 col-sm-12 col-xs-12">
-										<div class="x_panel">
-											<div class="x_title">
-												<h2>
-													Text areas<small>Sessions</small>
-												</h2>
-												<ul class="nav navbar-right panel_toolbox">
-													<li><a class="collapse-link"><i
-															class="fa fa-chevron-up"></i></a></li>
-													<li class="dropdown"><a href="#"
-														class="dropdown-toggle" data-toggle="dropdown"
-														role="button" aria-expanded="false"><i
-															class="fa fa-wrench"></i></a>
-														<ul class="dropdown-menu" role="menu">
-															<li><a href="#">Settings 1</a></li>
-															<li><a href="#">Settings 2</a></li>
-														</ul></li>
-													<li><a class="close-link"><i class="fa fa-close"></i></a>
-													</li>
-												</ul>
-												<div class="clearfix"></div>
-											</div>
-											<div class="x_content">
-												<div id="alerts"></div>
-												<div class="btn-toolbar editor" data-role="editor-toolbar"
-													data-target="#editor-one">
-													<div class="btn-group">
-														<a class="btn dropdown-toggle" data-toggle="dropdown"
-															title="Font"><i class="fa fa-font"></i><b
-															class="caret"></b></a>
-														<ul class="dropdown-menu">
-														</ul>
-													</div>
-
-													<div class="btn-group">
-														<a class="btn dropdown-toggle" data-toggle="dropdown"
-															title="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b
-															class="caret"></b></a>
-														<ul class="dropdown-menu">
-															<li><a data-edit="fontSize 5">
-																	<p style="font-size:17px">Huge</p>
-															</a></li>
-															<li><a data-edit="fontSize 3">
-																	<p style="font-size:14px">Normal</p>
-															</a></li>
-															<li><a data-edit="fontSize 1">
-																	<p style="font-size:11px">Small</p>
-															</a></li>
-														</ul>
-													</div>
-
-													<div class="btn-group">
-														<a class="btn" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i
-															class="fa fa-bold"></i></a> <a class="btn" data-edit="italic"
-															title="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
-														<a class="btn" data-edit="strikethrough"
-															title="Strikethrough"><i class="fa fa-strikethrough"></i></a>
-														<a class="btn" data-edit="underline"
-															title="Underline (Ctrl/Cmd+U)"><i
-															class="fa fa-underline"></i></a>
-													</div>
-
-													<div class="btn-group">
-														<a class="btn" data-edit="insertunorderedlist"
-															title="Bullet list"><i class="fa fa-list-ul"></i></a> <a
-															class="btn" data-edit="insertorderedlist"
-															title="Number list"><i class="fa fa-list-ol"></i></a> <a
-															class="btn" data-edit="outdent"
-															title="Reduce indent (Shift+Tab)"><i
-															class="fa fa-dedent"></i></a> <a class="btn"
-															data-edit="indent" title="Indent (Tab)"><i
-															class="fa fa-indent"></i></a>
-													</div>
-
-													<div class="btn-group">
-														<a class="btn" data-edit="justifyleft"
-															title="Align Left (Ctrl/Cmd+L)"><i
-															class="fa fa-align-left"></i></a> <a class="btn"
-															data-edit="justifycenter" title="Center (Ctrl/Cmd+E)"><i
-															class="fa fa-align-center"></i></a> <a class="btn"
-															data-edit="justifyright" title="Align Right (Ctrl/Cmd+R)"><i
-															class="fa fa-align-right"></i></a> <a class="btn"
-															data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i
-															class="fa fa-align-justify"></i></a>
-													</div>
-
-													<div class="btn-group">
-														<a class="btn dropdown-toggle" data-toggle="dropdown"
-															title="Hyperlink"><i class="fa fa-link"></i></a>
-														<div class="dropdown-menu input-append">
-															<input class="span2" placeholder="URL" type="text"
-																data-edit="createLink" />
-															<button class="btn" type="button">Add</button>
+															</fieldset>
 														</div>
-														<a class="btn" data-edit="unlink" title="Remove Hyperlink"><i
-															class="fa fa-cut"></i></a>
-													</div>
-
-													<div class="btn-group">
-														<a class="btn"
-															title="Insert picture (or just drag & drop)"
-															id="pictureBtn"><i class="fa fa-picture-o"></i></a> <input
-															type="file" data-role="magic-overlay"
-															data-target="#pictureBtn" data-edit="insertImage" />
-													</div>
-
-													<div class="btn-group">
-														<a class="btn" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i
-															class="fa fa-undo"></i></a> <a class="btn" data-edit="redo"
-															title="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
 													</div>
 												</div>
-												<div id="editor-one" class="editor-wrapper" ></div>
-												<textarea name="descr" id="descr" style="display:block;" ></textarea>
-												<br />
-												<div class="ln_solid"></div>
-												<div class="form-group">
-													<label class="control-label col-md-3 col-sm-3 col-xs-12">Resizable
-														Text area</label>
-													<div class="col-md-9 col-sm-9 col-xs-12">
-														<textarea class="resizable_textarea form-control"
-															placeholder="This text area automatically resizes its height as you fill in more text courtesy of autosize-master it out..."></textarea>
-													</div>
+												<!-- /form datepicker -->
+											</div>
+											<!-- 富文本编辑器 -->
+											<label class="control-label" for="textarea2"
+												id="newscontenttext">新闻内容 <span>*</span></label>
+											<div class="control-group">
+												<div class="controls" id="newscontent">
+													<textarea class="cleditor" id="textarea2" rows="3"
+														name="content"></textarea>
 												</div>
 											</div>
-										</div>
+											<!-- 富文本编辑器结束 -->
+											<!-- 文件上传开始 -->
+											<div class="control-group">
+												<label class="control-label" id="newsimagetext">新闻图片<span>*</span></label>
+												<div class="controls" id="newsimage">
+													<input name="img" type="file">
+												</div>
+											</div>
+											<!-- 文件上传结束 -->
+											<div class="form-group">
+												<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+													<button class="btn btn-primary" type="button">Cancel</button>
+													<button class="btn btn-primary" type="reset">Reset</button>
+													<button type="submit" class="btn btn-success">Submit</button>
+												</div>
+											</div>
+											<div class="ln_solid"></div>
+
+										</form>
 									</div>
-									<div class="form-group">
-										<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-											<button class="btn btn-primary" type="button">Cancel</button>
-											<button class="btn btn-primary" type="reset">Reset</button>
-											<button type="submit" class="btn btn-success">Submit</button>
-										</div>
+								</div>
+								<div class="title_right">
+									<div
+										class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
 									</div>
-									<div class="ln_solid"></div>
-									
-								</form>
-							</div>
-						</div>
-						<div class="title_right">
-							<div
-								class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-							</div>
-						</div>
-					</div>
-						
-					
-
-					<div class="row">
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<div class="x_panel">
-								<div class="x_title">
-									<h2>Dropzone multiple file uploader</h2>
-									<ul class="nav navbar-right panel_toolbox">
-										<li><a class="collapse-link"><i
-												class="fa fa-chevron-up"></i></a></li>
-										<li class="dropdown"><a href="#" class="dropdown-toggle"
-											data-toggle="dropdown" role="button" aria-expanded="false"><i
-												class="fa fa-wrench"></i></a>
-											<ul class="dropdown-menu" role="menu">
-												<li><a href="#">Settings 1</a></li>
-												<li><a href="#">Settings 2</a></li>
-											</ul></li>
-										<li><a class="close-link"><i class="fa fa-close"></i></a>
-										</li>
-									</ul>
-									<div class="clearfix"></div>
 								</div>
-								<div class="x_content">
-									<p>Drag multiple files to the box below for multi upload or
-										click to select files. This is for demonstration purposes
-										only, the files are not uploaded to any server.</p>
-									<form action="/forge_CMS/NewsServlet?method=upload" class="dropzone" enctype="multipart/form-data" method="post"></form>
-									<br /> <br /> <br /> <br />
-
-									
-								</div>
-
-
 							</div>
+
+
+
 
 						</div>
 					</div>
+					<!-- /page content -->
+
+					<!-- footer content -->
+					<footer>
+						<div class="pull-right">
+							Gentelella - Bootstrap Admin Template by <a
+								href="https://colorlib.com">Colorlib</a>
+						</div>
+						<div class="clearfix"></div>
+					</footer>
+					<!-- /footer content -->
 				</div>
 			</div>
-			<!-- /page content -->
 
-			<!-- footer content -->
-			<footer>
-				<div class="pull-right">
-					Gentelella - Bootstrap Admin Template by <a
-						href="https://colorlib.com">Colorlib</a>
-				</div>
-				<div class="clearfix"></div>
-			</footer>
-			<!-- /footer content -->
-		</div>
-	</div>
 
-	<!-- jQuery -->
-	<script src="../vendors/jquery/dist/jquery.min.js"></script>
-	<!-- Bootstrap -->
-	<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-	<!-- FastClick -->
-	<script src="../vendors/fastclick/lib/fastclick.js"></script>
-	<!-- NProgress -->
-	<script src="../vendors/nprogress/nprogress.js"></script>
-	<!-- Dropzone.js -->
-	<script src="../vendors/dropzone/dist/min/dropzone.min.js"></script>
+			<!-- FastClick -->
+			<script src="../vendors/fastclick/lib/fastclick.js"></script>
+			<!-- NProgress -->
+			<script src="../vendors/nprogress/nprogress.js"></script>
+			<!-- Dropzone.js -->
+			<script src="../vendors/dropzone/dist/min/dropzone.min.js"></script>
 
-	<!-- Custom Theme Scripts -->
-	<script src="../build/js/custom.min.js"></script>
-    <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
-    <!-- bootstrap-progressbar -->
-    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-    <!-- iCheck -->
-    <script src="../vendors/iCheck/icheck.min.js"></script>
-    <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <!-- bootstrap-wysiwyg -->
-    <script src="../vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
-    <script src="../vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
-    <script src="../vendors/google-code-prettify/src/prettify.js"></script>
-    <!-- jQuery Tags Input -->
-    <script src="../vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
-    <!-- Switchery -->
-    <script src="../vendors/switchery/dist/switchery.min.js"></script>
-    <!-- Select2 -->
-    <script src="../vendors/select2/dist/js/select2.full.min.js"></script>
-    <!-- Parsley -->
-    <script src="../vendors/parsleyjs/dist/parsley.min.js"></script>
-    <!-- Autosize -->
-    <script src="../vendors/autosize/dist/autosize.min.js"></script>
-    <!-- jQuery autocomplete -->
-    <script src="../vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
-    <!-- starrr -->
-    <script src="../vendors/starrr/dist/starrr.js"></script>
-    <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+			<!-- Custom Theme Scripts -->
+			<script src="../build/js/custom.min.js"></script>
+			<!-- jQuery -->
+			<script src="../vendors/jquery/dist/jquery.min.js"></script>
+			<!-- Bootstrap -->
+			<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+			<!-- FastClick -->
+			<script src="../vendors/fastclick/lib/fastclick.js"></script>
+			<!-- NProgress -->
+			<script src="../vendors/nprogress/nprogress.js"></script>
+			<!-- bootstrap-progressbar -->
+			<script
+				src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+			<!-- iCheck -->
+			<script src="../vendors/iCheck/icheck.min.js"></script>
+			<!-- bootstrap-daterangepicker -->
+			<script src="../vendors/moment/min/moment.min.js"></script>
+			<script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+			<!-- bootstrap-wysiwyg -->
+			<script
+				src="../vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+			<script src="../vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
+			<script src="../vendors/google-code-prettify/src/prettify.js"></script>
+			<!-- jQuery Tags Input -->
+			<script src="../vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+			<!-- Switchery -->
+			<script src="../vendors/switchery/dist/switchery.min.js"></script>
+
+			<!-- Parsley -->
+			<script src="../vendors/parsleyjs/dist/parsley.min.js"></script>
+			<!-- Autosize -->
+			<script src="../vendors/autosize/dist/autosize.min.js"></script>
+			<!-- jQuery autocomplete -->
+			<script
+				src="../vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+			<!-- starrr -->
+			<script src="../vendors/starrr/dist/starrr.js"></script>
+			<!-- Custom Theme Scripts -->
+			<script src="../build/js/custom.min.js"></script>
+
+
+
+
+
+
+			<!-- jQuery -->
+			<script src="js/jquery-1.7.2.min.js"></script>
+			<!-- jQuery UI -->
+			<script src="js/jquery-ui-1.8.21.custom.min.js"></script>
+			<!-- transition / effect library -->
+			<script src="js/bootstrap-transition.js"></script>
+			<!-- alert enhancer library -->
+			<script src="js/bootstrap-alert.js"></script>
+			<!-- modal / dialog library -->
+			<script src="js/bootstrap-modal.js"></script>
+			<!-- custom dropdown library -->
+			<script src="js/bootstrap-dropdown.js"></script>
+			<!-- scrolspy library -->
+			<script src="js/bootstrap-scrollspy.js"></script>
+			<!-- library for creating tabs -->
+			<script src="js/bootstrap-tab.js"></script>
+			<!-- library for advanced tooltip -->
+			<script src="js/bootstrap-tooltip.js"></script>
+			<!-- popover effect library -->
+			<script src="js/bootstrap-popover.js"></script>
+
+
+
+			<!-- autocomplete library -->
+			<script src="js/bootstrap-typeahead.js"></script>
+			<!-- tour library -->
+			<script src="js/bootstrap-tour.js"></script>
+			<!-- library for cookie management -->
+			<script src="js/jquery.cookie.js"></script>
+			<!-- calander plugin -->
+			<script src='js/fullcalendar.min.js'></script>
+			<!-- data table plugin -->
+			<script src='js/jquery.dataTables.min.js'></script>
+			<!-- select or dropdown enhancer -->
+			<script src="js/jquery.chosen.min.js"></script>
+			<!-- checkbox, radio, and file input styler -->
+			<script src="js/jquery.uniform.min.js"></script>
+			<!-- plugin for gallery image view -->
+			<script src="js/jquery.colorbox.min.js"></script>
+			<!-- rich text editor library -->
+			<script src="js/jquery.cleditor.min.js"></script>
+			<!-- notification plugin -->
+			<script src="js/jquery.noty.js"></script>
+			<!-- file manager library -->
+			<script src="js/jquery.elfinder.min.js"></script>
+			<!-- star rating plugin -->
+			<script src="js/jquery.raty.min.js"></script>
+			<!-- for iOS style toggle switch -->
+			<script src="js/jquery.iphone.toggle.js"></script>
+			<!-- autogrowing textarea plugin -->
+			<script src="js/jquery.autogrow-textarea.js"></script>
+			<!-- multiple file upload plugin -->
+			<script src="js/jquery.uploadify-3.1.min.js"></script>
+			<!-- history.js for cross-browser state change on ajax -->
+			<script src="js/jquery.history.js"></script>
+			<!-- application script for Charisma demo -->
+			<script src="js/charisma.js"></script>
 </body>
 </html>

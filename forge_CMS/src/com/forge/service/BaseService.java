@@ -10,5 +10,5 @@ public interface BaseService<T> {
 	boolean delete(Serializable id);
 	List<T> findAll();
 	T findById(Serializable id);
-	boolean update(Serializable id, User user);
+	boolean update(Serializable id, T t);
 }
